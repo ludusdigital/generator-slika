@@ -20,12 +20,6 @@ gallery_placeholder = st.empty()
 
 
 def configure_sidebar() -> None:
-  """
-    Setup and display the sidebar elements.
-
-    This function configures the sidebar of the Streamlit application, 
-    including the form for user inputs and the resources section.
-    """
   with st.sidebar:
     with st.form("my_form"):
       with st.expander("**⚙️ PODEŠAVANJA**"):
@@ -85,22 +79,7 @@ def main_page(submitted: bool, width: int, height: int, num_outputs: int,
               scheduler: str, num_inference_steps: int, guidance_scale: float,
               prompt_strength: float, refine: str, high_noise_frac: float,
               prompt: str, negative_prompt: str) -> None:
-  """Main page layout and logic for generating images.
-
-    Args:
-        submitted (bool): Flag indicating whether the form has been submitted.
-        width (int): Width of the output image.
-        height (int): Height of the output image.
-        num_outputs (int): Number of images to output.
-        scheduler (str): Scheduler type for the model.
-        num_inference_steps (int): Number of denoising steps.
-        guidance_scale (float): Scale for classifier-free guidance.
-        prompt_strength (float): Prompt strength when using img2img/inpaint.
-        refine (str): Refine style to use.
-        high_noise_frac (float): Fraction of noise to use for `expert_ensemble_refiner`.
-        prompt (str): Text prompt for the image generation.
-        negative_prompt (str): Text prompt for elements to avoid in the image.
-    """
+ 
   if submitted:
     with st.status('✨ Slika se generiše..', expanded=True) as status:
       try:
@@ -175,13 +154,7 @@ def main_page(submitted: bool, width: int, height: int, num_outputs: int,
 
 
 def main():
-  """
-    Main function to run the Streamlit application.
-
-    This function initializes the sidebar configuration and the main page layout.
-    It retrieves the user inputs from the sidebar, and passes them to the main page function.
-    The main page function then generates images based on these inputs.
-    """
+  
   submitted, width, height, num_outputs, scheduler, num_inference_steps, guidance_scale, prompt_strength, refine, high_noise_frac, prompt, negative_prompt = configure_sidebar(
   )
   main_page(submitted, width, height, num_outputs, scheduler,
